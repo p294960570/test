@@ -11,16 +11,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.plb.common.model.ResultCode;
 
 @Controller
-@RequestMapping(value = "home")
+@RequestMapping(value = "/home")
 public class HomeController {
 
 	Logger log = Logger.getLogger(HomeController.class);
 
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.POST)
+	public ResultCode test(HttpServletRequest request, String userName, String password) {
+		try {
+			ResultCode resultCode = new ResultCode();
+			resultCode = null;
+			return resultCode;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResultCode.error();
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ResultCode login(HttpServletRequest request, String userName, String password) {
 		try {
 			ResultCode resultCode = new ResultCode();
+
+			log.info("login");
 			resultCode = null;
 			return resultCode;
 		} catch (Exception e) {
